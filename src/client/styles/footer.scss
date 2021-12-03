@@ -1,6 +1,10 @@
 footer {
   p {
-    background-color: yellowgreen;
+    background-image: linear-gradient(84deg, #4b9f91, #1d2d3e);
+    color: #fff;
     padding: 10px 40px;
+    span {
+      float: right;
+    }
   }
 }

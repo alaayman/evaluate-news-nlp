@@ -6,7 +6,7 @@ function checkForUrl(inputText) {
   );
 
   console.log("the input is : ", regexp);
-  regexp != null ? true : false;
+  return regexp != null ? true : false;
 }
 
 export { checkForUrl };

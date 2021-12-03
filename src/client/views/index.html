@@ -4,7 +4,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
-    <title>Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Evaluate a News Article with Natural Language Processing</title>
     <!-- <link rel="stylesheet" href="/styles/resets.css" />
     <link rel="stylesheet" href="/styles/base.css" />
     <link rel="stylesheet" href="/styles/header.css" />
@@ -22,11 +29,11 @@
       <section>
         <form class="" onsubmit="return Client.handleSubmit(event)">
           <input
-            id="name"
+            id="urlInput"
             type="text"
             name="input"
             value=""
-            placeholder="Name"
+            placeholder="Enter url to the page to be handled"
           />
           <input
             type="submit"
@@ -38,21 +45,33 @@
         </form>
       </section>
 
-      <section>
-        <h3>Form Results:</h3>
+      <section id="table">
+        <h2>Form Results:</h2>
         <hr />
-        <div class="result" id="results"></div>
-      </section>
-      <section>
-        <h3>Cats Facts:</h3>
-        <hr />
-        <div class="result" id="results2"></div>
+        <table>
+          <tr>
+            <th>Agreement</th>
+            <th>Subjectivity</th>
+            <th>Confidence</th>
+            <th>Irony</th>
+            <th>Score_tag</th>
+          </tr>
+          <tr>
+            <td id="agreement"></td>
+            <td id="subjectivity"></td>
+            <td id="confidence"></td>
+            <td id="irony"></td>
+            <td id="score"></td>
+          </tr>
+        </table>
       </section>
     </main>
 
     <footer>
-      <p>This is a footer</p>
-      <p>Made by Alaa abd elaziz</p>
+      <p>
+        Udacity project (Evaluate a News Article with NLP)
+        <span> Made by Alaa abd elaziz</span>
+      </p>
     </footer>
   </body>
 </html>

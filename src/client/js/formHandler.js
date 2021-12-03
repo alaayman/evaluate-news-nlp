@@ -2,30 +2,41 @@ const axios = require("axios").default;
 
 function handleSubmit(event) {
   event.preventDefault();
-
-  // check what text was put into the form field
-  let formText = document.getElementById("name").value;
-  Client.checkForUrl(formText);
-
-  console.log("::: Form Submitted :::");
-  fetch("http://localhost:8081/test")
-    .then((res) => res.json())
-    .then(function (res) {
-      document.getElementById("results").innerHTML = res.message;
-    });
-
-  axios
-    .post("http://localhost:8081/result", {
-      analysisUrl: formText,
-      lang: "en",
-    })
-    .then((response) => {
-      // console.log("from client :::", response);
-      document.getElementById("results2").innerHTML = response.data.irony;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  const emptyData = {
+    irony: "",
+    agreement: "",
+    subjectivity: "",
+    confidence: "",
+    score_tag: "",
+  };
+  updateUi(emptyData);
+  // check the form field for url
+  let formUrl = document.getElementById("urlInput").value;
+  Client.checkForUrl(formUrl)
+    ? axios
+        .post("http://localhost:3000/result", {
+          analysisUrl: formUrl,
+          lang: "en",
+        })
+        .then((response) => {
+          // console.log("from client :::", response);
+          const data = response.data;
+          updateUi(data);
+          // document.getElementById("results2").innerHTML = response.data.irony;
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    : alert("your entry is not a valid url");
+  document.getElementById("urlInput").value = "";
 }
+
+const updateUi = (data) => {
+  document.getElementById("irony").innerHTML = data.irony;
+  document.getElementById("agreement").innerHTML = data.agreement;
+  document.getElementById("subjectivity").innerHTML = data.subjectivity;
+  document.getElementById("confidence").innerHTML = data.confidence;
+  document.getElementById("score").innerHTML = data.score_tag;
+};
 
 export { handleSubmit };
