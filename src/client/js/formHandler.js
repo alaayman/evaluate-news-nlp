@@ -1,9 +1,11 @@
+const axios = require("axios").default;
+
 function handleSubmit(event) {
   event.preventDefault();
 
   // check what text was put into the form field
   let formText = document.getElementById("name").value;
-  Client.checkForName(formText);
+  Client.checkForUrl(formText);
 
   console.log("::: Form Submitted :::");
   fetch("http://localhost:8081/test")
@@ -12,14 +14,17 @@ function handleSubmit(event) {
       document.getElementById("results").innerHTML = res.message;
     });
 
-  fetch("https://catfact.ninja/fact", {
-    method: "GET",
-    mode: "cors",
-    headers: {},
-  })
-    .then((res) => res.json())
-    .then(function (res) {
-      document.getElementById("results2").innerHTML = res.fact;
+  axios
+    .post("http://localhost:8081/result", {
+      analysisUrl: formText,
+      lang: "en",
+    })
+    .then((response) => {
+      // console.log("from client :::", response);
+      document.getElementById("results2").innerHTML = response.data.irony;
+    })
+    .catch((error) => {
+      console.log(error);
     });
 }
 
