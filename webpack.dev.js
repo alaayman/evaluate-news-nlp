@@ -11,8 +11,7 @@ module.exports = {
   output: {
     libraryTarget: "var",
     library: "Client",
-
-    // path: path.resolve(process.cwd(), "dist"),
+    path: path.resolve(process.cwd(), "dist"),
   },
   module: {
     rules: [
