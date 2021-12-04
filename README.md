@@ -40,32 +40,33 @@ API_KEY=**************************
 I used the latest version of all dependencies
 
 "dependencies": {
-"axios": "^0.24.0",
-"body-parser": "^1.19.0",
-"cors": "^2.8.5",
-"dotenv": "^10.0.0",
-"express": "^4.17.1",
-"webpack": "^5.64.4",
-"webpack-cli": "^4.9.1",
-"workbox-webpack-plugin": "^6.4.2"
-},
+- "axios": "^0.24.0",
+- "body-parser": "^1.19.0",
+- "cors": "^2.8.5",
+- "dotenv": "^10.0.0",
+- "express": "^4.17.1",
+- "webpack": "^5.64.4",
+- "webpack-cli": "^4.9.1",
+- "workbox-webpack-plugin": "^6.4.2"
+}
+
 "devDependencies": {
-"@babel/core": "^7.16.0",
-"@babel/preset-env": "^7.16.4",
-"babel-loader": "^8.2.3",
-"clean-webpack-plugin": "^4.0.0",
-"css-loader": "^6.5.1",
-"css-minimizer-webpack-plugin": "^3.2.0",
-"html-webpack-plugin": "^5.5.0",
-"jest": "^27.4.3",
-"mini-css-extract-plugin": "^2.4.5",
-"node-sass": "^6.0.1",
-"nodemon": "^2.0.15",
-"sass-loader": "^12.3.0",
-"style-loader": "^3.3.1",
-"terser-webpack-plugin": "^5.2.5",
-"webpack-bundle-analyzer": "^4.5.0",
-"webpack-dev-server": "^4.6.0"
+- "@babel/core": "^7.16.0",
+- "@babel/preset-env": "^7.16.4",
+- "babel-loader": "^8.2.3",
+- "clean-webpack-plugin": "^4.0.0",
+- "css-loader": "^6.5.1",
+- "css-minimizer-webpack-plugin": "^3.2.0",
+- "html-webpack-plugin": "^5.5.0",
+- "jest": "^27.4.3",
+- "mini-css-extract-plugin": "^2.4.5",
+- "node-sass": "^6.0.1",
+- "nodemon": "^2.0.15",
+- "sass-loader": "^12.3.0",
+- "style-loader": "^3.3.1",
+- "terser-webpack-plugin": "^5.2.5",
+- "webpack-bundle-analyzer": "^4.5.0",
+- "webpack-dev-server": "^4.6.0"
 }
 
 I used "css-minimizer-webpack-plugin" instead of "optimize-css-assets-webpack-plugin" because it was deprecated and only work with webpack 4
