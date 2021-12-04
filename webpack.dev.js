@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-// const { GenerateSW } = require("workbox-webpack-plugin");
+const { GenerateSW } = require("workbox-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -45,6 +45,6 @@ module.exports = {
     //and WARNING in GenerateSW has been called multiple times
     //so shuting down the server worker in dev mode
 
-    // new GenerateSW(),
+    new GenerateSW(),
   ],
 };
