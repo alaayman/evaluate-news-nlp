@@ -12,9 +12,7 @@ using
 
 ## Getting started
 
-It would probably be good to first get your basic project setup and functioning. Follow the steps from the course up to Lesson 4 but don't add Service Workers just yet. We won't need the service workers during development and having extra caches floating around just means there's more potential for confusion. So, fork this repo and begin your project setup.
-
-Remember that once you clone, you will still need to install everything:
+download or clone repo from github
 
 `cd` into your new folder and run:
 
@@ -22,101 +20,77 @@ Remember that once you clone, you will still need to install everything:
 
 ## Setting up the API
 
-The Aylien API is perhaps different than what you've used before. It has you install a node module to run certain commands through, it will simplify the requests we need to make from our node/express backend.
-
 ### Step 1: Signup for an API key
 
-First, you will need to go [here](https://developer.aylien.com/signup). Signing up will get you an API key. Don't worry, at the time of this course, the API is free to use up to 1000 requests per day or 333 intensive requests. It is free to check how many requests you have remaining for the day.
+go to <https://www.meaningcloud.com/developer/apis> and create an account to get api key
 
-### Step 2: Install the SDK
+### Step 2: Environment Variables
 
-Next you'll need to get the SDK. SDK stands for Software Development Kit, and SDKs are usually a program that brings together various tools to help you work with a specific technology. SDKs will be available for all the major languages and platforms, for instance the Aylien SDK brings together a bunch of tools and functions that will make it possible to interface with their API from our server and is available for Node, Python, PHP, Go, Ruby and many others. We are going to use the Node one, the page is available [here](https://docs.aylien.com/textapi/sdks/#sdks). You get 1000 free requests per day.
-
-### Step 3: Require the SDK package
-
-Install the SDK in your project and then we'll be ready to set up your server/index.js file.
-
-Your server index.js file must have these things:
-
-- [ ] Require the Aylien npm package
-
-```
-var aylien = require("aylien_textapi");
-```
-
-### Step 4: Environment Variables
-
-Next we need to declare our API keys, which will look something like this:
-
-```
-// set aylien API credentias
-var textapi = new aylien({
-  application_id: "your-api-id",
-  application_key: "your-key"
-});
-```
-
-...but there's a problem with this. We are about to put our personal API keys into a file, but when we push, this file is going to be available PUBLICLY on Github. Private keys, visible publicly are never a good thing. So, we have to figure out a way to make that not happen. The way we will do that is with environment variables. Environment variables are pretty much like normal variables in that they have a name and hold a value, but these variables only belong to your system and won't be visible when you push to a different environment like Github.
-
-- [ ] Use npm or yarn to install the dotenv package `npm install dotenv`. This will allow us to use environment variables we set in a new file
+- [ ] dotenv is a dependency in the project if you npm install then you have it
 - [ ] Create a new `.env` file in the root of your project
-- [ ] Go to your .gitignore file and add `.env` - this will make sure that we don't push our environment variables to Github! If you forget this step, all of the work we did to protect our API keys was pointless.
+- [ ] Go to your .gitignore file and add `.env` - this will make sure that we don't push our environment variables to Github!
 - [ ] Fill the .env file with your API keys like this:
 
 ```
-API_ID=**************************
 API_KEY=**************************
 ```
 
-- [ ] Add this code to the very top of your server/index.js file:
+## dependencies
 
-```
-const dotenv = require('dotenv');
-dotenv.config();
-```
+I used the latest version of all dependencies
 
-- [ ] Reference variables you created in the .env file by putting `process.env` in front of it, an example might look like this:
-
-```
-console.log(`Your API key is ${process.env.API_KEY}`);
-```
-
-...Not that you would want to do that. This means that our updated API credential settings will look like this:
-
-```javascript
-// set aylien API credentials
-// NOTICE that textapi is the name I used, but it is arbitrary.
-// You could call it aylienapi, nlp, or anything else,
-//   just make sure to make that change universally!
-var textapi = new aylien({
-  application_id: process.env.API_ID,
-  application_key: process.env.API_KEY,
-});
-```
-
-### Step 5: Using the API
-
-We're ready to go! The API has a lot of different endpoints you can take a look at [here](https://docs.aylien.com/textapi/endpoints/#api-endpoints). And you can see how using the SDK simplifies the requests we need to make.
-
-I won't provide further examples here, as it's up to you to create the various requests and make sure your server is set up appropriately.
-
-## After the Aylien API
-
-Once you are hooked up to the Aylien API, you are most of the way there! Along with making sure you are following all the requirements in the project rubric in the classroom, here are a few other steps to make sure you take.
-
-- Parse the response body to dynamically fill content on the page.
-- Test that the server and form submission work, making sure to also handle error responses if the user input does not match API requirements.
-- Go back to the web pack config and add the setup for service workers.
-- Test that the site is now available even when you stop your local server
-
-## Deploying
-
-A great step to take with your finished project would be to deploy it! Unfortunately its a bit out of scope for me to explain too much about how to do that here, but checkout [Netlify](https://www.netlify.com/) or [Heroku](https://www.heroku.com/) for some really intuitive free hosting options.
-
-used latest version of all dependencies
+"dependencies": {
+"axios": "^0.24.0",
+"body-parser": "^1.19.0",
 "cors": "^2.8.5",
+"dotenv": "^10.0.0",
 "express": "^4.17.1",
 "webpack": "^5.64.4",
-"webpack-cli": "^4.9.1"
+"webpack-cli": "^4.9.1",
+"workbox-webpack-plugin": "^6.4.2"
+},
+"devDependencies": {
+"@babel/core": "^7.16.0",
+"@babel/preset-env": "^7.16.4",
+"babel-loader": "^8.2.3",
+"clean-webpack-plugin": "^4.0.0",
+"css-loader": "^6.5.1",
+"css-minimizer-webpack-plugin": "^3.2.0",
+"html-webpack-plugin": "^5.5.0",
+"jest": "^27.4.3",
+"mini-css-extract-plugin": "^2.4.5",
+"node-sass": "^6.0.1",
+"nodemon": "^2.0.15",
+"sass-loader": "^12.3.0",
+"style-loader": "^3.3.1",
+"terser-webpack-plugin": "^5.2.5",
+"webpack-bundle-analyzer": "^4.5.0",
+"webpack-dev-server": "^4.6.0"
+}
 
-used "css-minimizer-webpack-plugin" instead of "optimize-css-assets-webpack-plugin" because it was deprecated and work with webpack4
+I used "css-minimizer-webpack-plugin" instead of "optimize-css-assets-webpack-plugin" because it was deprecated and only work with webpack 4
+
+## How to run
+
+run npm start to start the server at port 3000
+then run npm run build-prod to create the dist folder
+In your browser open <http://localhost:3000>
+the app will start and you can enter the url to the page to be processed
+You can use npm run build-dev to start the development environment on <http://localhost:8080>
+
+## Credits
+
+I used guidance and ideas from :
+
+- <https://udacity.com>
+- <https://developer.mozilla.org>
+- <https://www.w3schools.com>
+- <https://developers.google.com/web/tools/workbox>
+- <https://webpack.js.org/>
+- <https://webpack.js.org/>
+- <https://jestjs.io/>
+  and a lot more
+
+  Watched a lot of videos and searched a lot all over the web it was a nice experience
+
+Thank you all for helping :smile:
