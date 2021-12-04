@@ -21,6 +21,7 @@ function handleSubmit(event) {
         .then((response) => {
           // console.log("from client :::", response);
           const data = response.data;
+          // alert("data retrieved ");
           updateUi(data);
           // document.getElementById("results2").innerHTML = response.data.irony;
         })

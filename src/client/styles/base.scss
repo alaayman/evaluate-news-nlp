@@ -18,11 +18,19 @@ section {
     font-weight: 700;
   }
 }
+.info {
+  font-size: smaller;
+}
 table,
 #table {
   text-align: center;
   margin: auto;
+  li {
+    list-style: disc;
+    text-align: start;
+  }
 }
+
 th {
   background-color: #ddd;
   color: black;

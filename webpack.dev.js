@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const WorkboxPlugin = require("workbox-webpack-plugin");
+// const { GenerateSW } = require("workbox-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -41,6 +41,10 @@ module.exports = {
       cleanStaleWebpackAssets: true,
       protectWebpackAssets: false,
     }),
-    new WorkboxPlugin.GenerateSW(),
+    //getting a lot of workbox Router is responding to: /main.js
+    //and WARNING in GenerateSW has been called multiple times
+    //so shuting down the server worker in dev mode
+
+    // new GenerateSW(),
   ],
 };

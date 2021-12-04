@@ -42,6 +42,14 @@
             onclick="return Client.handleSubmit(event)"
             onsubmit="return Client.handleSubmit(event)"
           />
+          <!-- <input
+            type="button"
+            id="submitBtn"
+            name=""
+            value="Submit 2"
+            onclick="return Client.handleSubmit(event)"
+            onsubmit="return Client.handleSubmit(event)"
+          /> -->
         </form>
       </section>
 
@@ -65,6 +73,27 @@
           </tr>
         </table>
       </section>
+      <section class="info">
+        <table>
+          <tr id="score_tag">
+            <td><code>score_tag</code></td>
+            <td>
+              Polarity of the element it refers to: global
+              polarity,<code>polarity_term</code>,
+              <code>sentimented_concept</code>, <code>sentimented_entity</code>,
+              <code>segment</code> or <code>sentence</code>. Possible values:
+              <ul>
+                <li><code>P+</code>: strong positive</li>
+                <li><code>P</code>: positive</li>
+                <li><code>NEU</code>: neutral</li>
+                <li><code>N</code>: negative</li>
+                <li><code>N+</code>: strong negative</li>
+                <li><code>NONE</code>: without polarity</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </section>
     </main>
 
     <footer>
@@ -75,13 +104,15 @@
     </footer>
 
     <script>
-      // Check that service workers are supported
-      if ("serviceWorker" in navigator) {
-        // Use the window load event to keep the page load performant
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/service-worker.js");
-        });
-      }
+      // no longer needed put the registration in index.js to only install on production
+
+      // // Check that service workers are supported
+      // if ("serviceWorker" in navigator ) {
+      //   // Use the window load event to keep the page load performant
+      //   window.addEventListener("load", () => {
+      //     navigator.serviceWorker.register("/service-worker.js");
+      //   });
+      // }
     </script>
   </body>
 </html>
